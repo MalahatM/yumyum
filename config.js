@@ -1,3 +1,2 @@
-{
-	"key": "yum-zaCmZA74PLKCrD8Y"
-  }
+
+export const API_KEY = "yum-zaCmZA74PLKCrD8Y";  
