@@ -1,11 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Resturant menu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+  <script type="module" src="config.js"></script>
+  <script type="module" src="script.js"></script>
+
 </head>
 <body>
+
+	<header>
+		<div class="header-content">
+		  <img src="yumyum pic/DALL·E 2024-12-07 16.39.00 - A simple and modern logo for a restaurant named 'Yum Yum'. The logo should include the words 'Yum Yum' in bold, friendly font with an orange color sch.jpeg" alt="Yum Yum Logo" class="header-logo">
+		  <h1>YumYum Menu</h1>
+		  <img src="yumyum pic/icons8-basket-50.png" alt="Shopping Basket" class="basket-icon">
+		  <span id="cart-item-count">0</span> <!-- تعداد سفارشات نمایش داده می‌شود -->
+		</div>
+	  </header>
+
+	 
+	  
+ <div class="menu-section" id="menu-section">
+  <main class="menu-container">
 	
+    <!-- Box 1: Foods -->
+    <section class="menu-box" id="foods">
+		<section class="menu-box" id="foods">
+			<h2>Foods</h2>
+			<div class="menu-item">
+			  <img class="food-image" src="yumyum pic/paris.jpeg" alt="Wonton Soup">
+			  <div class="food-info">
+				<h3>Wonton Soup</h3>
+				<p>50 SEK</p>
+				<p>Ingredients: Pork, Ginger, Garlic, Soy Sauce</p>
+			  </div>
+			  <button class="add-to-cart">Add to Cart</button>
+			</div>
+		  
+			<div class="menu-item">
+			  <img class="food-image" src="yumyum pic/paris.jpeg" alt="Fried Rice">
+			  <div class="food-info">
+				<h3>Fried Rice</h3>
+				<p>45 SEK</p>
+				<p>Ingredients: Egg, Shrimp, Vegetables</p>
+			  </div>
+			  <button class="add-to-cart">Add to Cart</button>
+			</div>
+		  
+			<div class="menu-item">
+			  <img class="food-image" src="yumyum pic/paris.jpeg" alt="Spring Rolls">
+			  <div class="food-info">
+				<h3>Spring Rolls</h3>
+				<p>35 SEK</p>
+				<p>Ingredients: Cabbage, Carrot, Glass Noodles</p>
+			  </div>
+			  <button class="add-to-cart">Add to Cart</button>
+			</div>
+		  
+			<div class="menu-item">
+			  <img class="food-image" src="yumyum pic/paris.jpeg" alt="Sweet and Sour Chicken">
+			  <div class="food-info">
+				<h3>Sweet and Sour Chicken</h3>
+				<p>60 SEK</p>
+				<p>Ingredients: Chicken, Pineapple, Bell Pepper</p>
+			  </div>
+			  <button class="add-to-cart">Add to Cart</button>
+			</div>
+		  
+			<div class="menu-item">
+			  <img class="food-image" src="yumyum pic/paris.jpeg" alt="Beef Noodles">
+			  <div class="food-info">
+				<h3>Beef Noodles</h3>
+				<p>70 SEK</p>
+				<p>Ingredients: Beef, Soy Sauce, Green Onion</p>
+			  </div>
+			  <button class="add-to-cart">Add to Cart</button>
+			</div>
+		  </section>
+		  
+    </section>
+
+    <!-- Box 2: Sauces -->
+	
+	 <section class="menu-box" id="sauces">
+		<h2>Sauces</h2>
+		<div class="menu-item">
+		  <div class="food-info">
+			<h3>Sweet Chili Sauce</h3>
+			<p>Price: 5 SEK</p>
+		  </div>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		<div class="menu-item">
+		  <div class="food-info">
+			<h3>Garlic Soy Sauce</h3>
+			<p>Price: 5 SEK</p>
+		  </div>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		<div class="menu-item">
+			<div class="food-info">
+			  <h3>Garlic Soy Sauce</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		  <div class="menu-item">
+			<div class="food-info">
+			  <h3>Garlic Soy Sauce</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		  <div class="menu-item">
+			<div class="food-info">
+			  <h3>Garlic Soy Sauce</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		  <div class="menu-item">
+			<div class="food-info">
+			  <h3>Garlic Soy Sauce</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		
+	  </section>
+
+    <!-- Box 3: Drinks -->
+	<section class="menu-box" id="drinks">
+		<h2>Drinks</h2>
+		<div class="menu-item">
+		  <div class="food-info">
+			<h3>Coca Cola</h3>
+			<p>Price: 5 SEK</p>
+		  </div>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		<div class="menu-item">
+		  <div class="food-info">
+			<h3>Pepsi</h3>
+			<p>Price: 5 SEK</p>
+		  </div>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		<div class="menu-item">
+			<div class="food-info">
+			  <h3>Coca Cola</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		  <div class="menu-item">
+			<div class="food-info">
+			  <h3>Coca Cola</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		  <div class="menu-item">
+			<div class="food-info">
+			  <h3>Coca Cola</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		  <div class="menu-item">
+			<div class="food-info">
+			  <h3>Coca Cola</h3>
+			  <p>Price: 5 SEK</p>
+			</div>
+			<button class="add-to-cart">Add to Cart</button>
+		  </div>
+		
+	  </section>
+	  	
+  </main>
+  </div>
+ 
+  <header>
+	<div class="cart-section" id="cart-section"></div>
+	  <button id="back-to-menu-btn" class="back-icon">Back to Menu</button>
+	  <h1>Your Order</h1>
+	</div>
+  </header>
+  <main id="order-section">
+	<h2>Order Summary</h2>
+	<div id="order-list">
+	  <!-- Cart items will be dynamically inserted here -->
+	</div>
+	<div class="order-total">
+	  <h3>Total: <span id="total-price">0 SEK</span></h3>
+	  <button id="checkout-btn">Checkout</button>
+	</div>
+  </main>
+</div>
+
+  <footer>
+    <p>© 2024 Yum Yum Gim Me Sum</p>
+  </footer>
 </body>
 </html>
