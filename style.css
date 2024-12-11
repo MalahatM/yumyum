@@ -1,4 +1,8 @@
 body {
+	display: grid;
+	justify-content: center; 
+    align-items: center;    
+    height: 100vh;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -14,6 +18,7 @@ body {
     position: relative;
     margin: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
 }
 
 .menu-title {
@@ -73,6 +78,7 @@ body {
 /* Active page will be shown */
 .page.active {
     display: block;
+	
 }
 
 /* Order Section */
@@ -85,22 +91,6 @@ body {
 }
 
 /* Responsive Media Queries */
-@media (min-width: 768px) {
-    .menu-container {
-        margin: 20px auto;
-        max-width: 600px;
-    }
-
-    .items-container {
-        flex-direction: row;
-        gap: 20px;
-    }
-
-    .item {
-        width: calc(50% - 10px);
-    }
-}
-
 @media (min-width: 1024px) {
     .menu-container {
         max-width: 800px;
