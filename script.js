@@ -1,5 +1,26 @@
 
 const API_KEY = "yum-zaCmZA74PLKCrD8Y";
+const apiUrl = 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/'
+
+
+
+async function loadMenuItems() {
+    try {
+        const response = await fetch(' https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${"yum-zaCmZA74PLKCrD8Y"}`, // Use the API_KEY for authorization
+            },
+        });
+        const data = await response.json();
+        displayMenuItems(data);
+    } catch (error) {
+        console.error('Error fetching menu items:', error);
+    }
+}
+
+
+
 const ITEMS = [
     {
       id: 1,
@@ -31,20 +52,141 @@ const ITEMS = [
       ingredients: ["majs", "tomat", "rostade ärtor", "vitlök", "lime"],
       price: 9,
     },
-  ];
+	{
+		id: 6,
+		"type": "dip",
+		name: "Sweet Chili",
+		"description": "Stark och söt dip från Thailänska höglandet.",
+		price: 19
+	  },
+	  {
+		id: 7,
+		"type": "dip",
+		name: "Sweet & Sour",
+		"description": "Klassiska sötsura dipsåsen från Kina.",
+		price: 19
+	  },
+	  {
+		id: 8,
+		"type": "dip",
+		name: "Guacamole",
+		"description": "Avocado, tomat och kryddor i optimal kombination.",
+		price: 19
+	  },
+	  {
+		id: 9,
+		"type": "dip",
+		name: "Wonton Standard",
+		"description": "Smaksatt olja med soya, chili, vitlök & ingefära.",
+		price: 19
+	  },
+	  {
+		id: 10,
+		"type": "dip",
+		name: "Hot Mango",
+		"description": "Kryddstark och söt chunky mangodip.",
+		price: 19
+	  },
+	  {
+		id: 11,
+		"type": "dip",
+		name: "Chili Mayo",
+		"description": "Egengjord majonäs smaksatt med chili.",
+		price: 19
+	  },
+	{
+		id: 12,
+		"type": "drink",
+		name: "Sprite",
+		"description": "Lorem ipsum dolor sit amet, bubbly fruity elit. Fizzy carbonated.",
+		price: 19
+	  },
+	  {
+		id: 13,
+		"type": "drink",
+		name: "Fanta Orange",
+		"description": "Lorem ipsum dolor sit amet, bubbly fruity elit. Fizzy carbonated.",
+		price: 19
+	  },
+	  {
+		id: 14,
+		"type": "drink",
+		name: "Fanta Exotic",
+		"description": "Lorem ipsum dolor sit amet, bubbly fruity elit. Fizzy carbonated.",
+		price: 19
+	  },
+	  {
+		id: 15,
+		"type": "drink",
+		name: "Coca Cola",
+		"description": "Lorem ipsum dolor sit amet, bubbly fruity elit. Fizzy carbonated.",
+		price: 19
+	  },
+	  {
+		id: 16,
+		"type": "drink",
+		name: "LOKA Citrus",
+		"description": "Lorem ipsum dolor sit amet, bubbly fruity elit. Fizzy carbonated.",
+		price: 19
+	  },
+	  {
+		id: 17,
+		"type": "drink",
+		name: "LOKA Granatäpple",
+		"description": "Lorem ipsum dolor sit amet, bubbly fruity elit. Fizzy carbonated.",
+		price: 19
+	  }
+]
+
+
+
+
+
+
+
+
+
 let cart = [];
 
 // Load menu items dynamically
 const menuContainer = document.getElementById("menu-items");
-ITEMS.forEach((item) => {
+/*ITEMS.forEach((item) => {
     const div = document.createElement("div");
     div.className = "item";
     div.innerHTML = `
         <h3>${item.name}</h3>
-        <p>Price: ${item.price} SEK</p>
-    `;
-    menuContainer.appendChild(div);
+	    <p>Price: ${item.price} SEK</p>
+    `;*/
 
+
+	ITEMS.forEach((item) => {
+		const div = document.createElement("div");
+		div.className = "item";
+	
+		// Check item type for dips and drinks
+		if (item.type === "dip" || item.type === "drink") {
+			// Show only name and price for dips and drinks
+			div.innerHTML =`
+				<h3>${item.name}</h3>
+				<p>Pris: ${item.price} SEK</p>
+			`;
+		} else {
+			// Show name, ingredients, and price for other types
+			const ingredients = item.ingredients
+				? `Ingredienser: ${item.ingredients.join(", ")}`
+				: ""; // Leave empty if no ingredients
+			div.innerHTML =` 
+				<h3>${item.name}</h3>
+				<p>${ingredients}</p>
+				<p>Pris: ${item.price} SEK</p>
+			`;
+		}
+
+
+
+
+
+    menuContainer.appendChild(div);
     div.addEventListener("click", () => {
         const existingItem = cart.find((cartItem) => cartItem.id === item.id);
         if (existingItem) {
