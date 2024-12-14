@@ -1,21 +1,31 @@
 
 const API_KEY = "yum-zaCmZA74PLKCrD8Y";
 const apiUrl = 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/'
-
+const tenantId="a2f4"
 
 
 async function loadMenuItems() {
     try {
-        const response = await fetch(' https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/', {
+        const response = await fetch(`${apiUrl}/menu`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${"yum-zaCmZA74PLKCrD8Y"}`, // Use the API_KEY for authorization
+                'Content-type':'application/json',
+				'x-zocom':API_KEY
             },
         });
+
         const data = await response.json();
-        displayMenuItems(data);
+		//Extract items from the response
+		const menuItems=data.items;
+
+		if (!menuItems|| !Array.isArray(menuItems)){
+			console.error('No menue items found in response');
+			return[];
+		}
+		return menuItems;
     } catch (error) {
-        console.error('Error fetching menu items:', error);
+        console.error('Error loading menu items:', error);
+		return[];//Return empty array if API fails
     }
 }
 
@@ -150,13 +160,7 @@ let cart = [];
 
 // Load menu items dynamically
 const menuContainer = document.getElementById("menu-items");
-/*ITEMS.forEach((item) => {
-    const div = document.createElement("div");
-    div.className = "item";
-    div.innerHTML = `
-        <h3>${item.name}</h3>
-	    <p>Price: ${item.price} SEK</p>
-    `;*/
+
 
 
 	ITEMS.forEach((item) => {
