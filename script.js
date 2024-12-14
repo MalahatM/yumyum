@@ -1,4 +1,3 @@
-
 const API_KEY = "yum-zaCmZA74PLKCrD8Y";
 const apiUrl = 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/'
 const tenantId="a2f4"
@@ -82,6 +81,11 @@ function updateCart() {
     const totalPriceElem = document.getElementById("total-price");
     cartContainer.innerHTML = "";
     let totalPrice = 0;
+	 
+	if (cart.length===0){
+		cartContainer.innerHtml='<p>Din varukorg är tom</p>';
+		return;
+	}
 
     cart.forEach((item, index) => {
         const div = document.createElement("div");
