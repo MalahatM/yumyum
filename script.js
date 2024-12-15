@@ -238,6 +238,28 @@ async function initializeApp() {
 }
 //call when page loads
 initializeApp();
+// Organize menu items by category
+function displayMenuItems(items) {
+
+    if (!items || !Array.isArray(items)) {
+        console.error('Invalid menu items format:', items);
+        return;
+    }
+
+    const menuContainer = document.getElementById("menu-items");
+    if (!menuContainer) {
+        console.error('Menu container not found');
+        return;
+    }
+
+    menuContainer.innerHTML = ''; // Clear existing items
+    
+    // Create sections with updated wonton filter
+    const sections = {
+        wontons: items.filter(item => item.type === "wonton"),
+        dips: items.filter(item => item.type === "dip"),
+        drinks: items.filter(item => item.type === "drink")
+    };
 
 
 function showReceipt(orderId) {
