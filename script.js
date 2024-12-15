@@ -236,7 +236,8 @@ async function initializeApp() {
         alert('Kunde inte starta appen. Försök ladda om sidan.');
     }
 }
-
+//call when page loads
+initializeApp();
 
 
 function showReceipt(orderId) {
