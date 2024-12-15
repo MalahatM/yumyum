@@ -107,23 +107,21 @@ function updateCart() {
         div.innerHTML = `
             <h3>${item.name}</h3>
             <div class="quantity-controls">
-			<button class= "quantity-btn decrease-quantity" data-index=
+			<button class= "quantity-btn decrease-quantity" data-index="${index}">-</button>
 			<span>${item.quantity}</span>
-			<button class= "quantity-btn increase-quantity" data-index=
-			<button class= "quantity-btn remove-quantity" data-index=
+			<button class= "quantity-btn increase-quantity" data-index="${index}">+</button>
+			<button class= "quantity-btn remove-quantity" data-index="${index}">0</button>
 
-            <p>Quantity: <span class="quantity">${item.quantity}</span></p>
-            <button data-index="${index}" class="remove-from-cart">Remove</button>
-            <button data-index="${index}" class="increase-quantity">+</button>
-            <button data-index="${index}" class="decrease-quantity">-</button>
-        `;</div>
+        </div>
+		<p>Pris:${item.prise*item.quantity} sEk</p>
+		`;
+
         cartContainer.appendChild(div);
         totalPrice += item.price * item.quantity;
     });
 
     totalPriceElem.textContent = totalPrice;
 }
-
 // Update cart badge
 function updateCartBadge() {
     const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
