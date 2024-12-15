@@ -27,10 +27,22 @@ async function loadMenuItems() {
 		return[];//Return empty array if API fails
     }
 }
+function addToCart(item){
+	const existingItem= cart.find((cartItem)=>cartItem.id===item.id);
+	if(existingItem){
+		existingItem.quantity+=1;
+	} else{
+			cart.push({...item,quantity:1 });
+		}
+		
+		uppdateCart();
+		uppdateCartBadge();
+	}
 
 
 
 // Load menu items dynamically
+/*
 const menuContainer = document.getElementById("menu-items");
 
 
@@ -73,7 +85,7 @@ const menuContainer = document.getElementById("menu-items");
         updateCart();
         updateCartBadge();
     });
-});
+});*/
 
 let cart=[];
 
@@ -91,15 +103,20 @@ function updateCart() {
 
     cart.forEach((item, index) => {
         const div = document.createElement("div");
-        div.className = "item";
+        div.className = "cart-item";
         div.innerHTML = `
             <h3>${item.name}</h3>
-            <p>Price: ${item.price} SEK</p>
+            <div class="quantity-controls">
+			<button class= "quantity-btn decrease-quantity" data-index=
+			<span>${item.quantity}</span>
+			<button class= "quantity-btn increase-quantity" data-index=
+			<button class= "quantity-btn remove-quantity" data-index=
+
             <p>Quantity: <span class="quantity">${item.quantity}</span></p>
             <button data-index="${index}" class="remove-from-cart">Remove</button>
             <button data-index="${index}" class="increase-quantity">+</button>
             <button data-index="${index}" class="decrease-quantity">-</button>
-        `;
+        `;</div>
         cartContainer.appendChild(div);
         totalPrice += item.price * item.quantity;
     });
@@ -145,21 +162,6 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     }
 });
 
-// Place order and reset cart
-document.getElementById("place-order").addEventListener("click", async() => {
-	if (cart.lenght===0){
-		alert('Din varukorg är tom');
-		return;
-	}
-	try{
-		await placeOrder();
-        cart = [];
-    updateCart();
-    updateCartBadge();
-   }catch(error){
-	console.error('Error',error);
-	alert('Något gick fel när orden akulle läggas.');
-   }
 
 // Show Faktur page
 function showFaktur() {
@@ -195,10 +197,30 @@ document.getElementById("cart-icon-container").addEventListener("click", () => {
 });
 
 
-// Reset app state for a new order
-function resetApp() {
-    cart = [];
+
+// Place order and reset cart
+document.getElementById("place-order").addEventListener("click", async() => {
+	if (cart.lenght===0){
+		alert('Din varukorg är tom');
+		return;
+	}
+	try{
+		await placeOrder();
+        cart = [];
     updateCart();
     updateCartBadge();
+   }catch(error){
+	console.error('Error',error);
+	alert('Något gick fel när orden akulle läggas.');
+   }
+
+function showReceipt(orderId) {
+	const ReceiptText=document.getElementById('confirmation-text');
+	receiptText.innerHtml=
+	Tack för din beställning!<br></br>
+	Order Id:${orderId}<br></br>
+	din mat kommer snart;
+	navigateToPage('faktur');
 }
+  
 
