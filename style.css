@@ -65,6 +65,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+	margin-bottom: 15px;
 }
 
 .page {
@@ -89,6 +90,18 @@ body {
 
 #total {
     margin-top: 20px;
+}
+.menu-section{
+	background: #444;
+	margin-bottom: 20px;
+	padding: 15px;
+	border-radius: 8px;
+}
+.menu-section h2{
+	color:white;
+	margin-bottom: 20px;
+	text-transform:uppercase
+
 }
 
 
