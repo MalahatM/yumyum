@@ -35,8 +35,8 @@ function addToCart(item){
 			cart.push({...item,quantity:1 });
 		}
 		
-		uppdateCart();
-		uppdateCartBadge();
+		updateCart();
+		updateCartBadge();
 	}
 
 
@@ -113,14 +113,14 @@ function updateCart() {
 			<button class= "quantity-btn remove-quantity" data-index="${index}">0</button>
 
         </div>
-		<p>Pris:${item.prise*item.quantity} sEk</p>
+		<p>Pris:${item.prise*item.quantity} SEK</p>
 		`;
 
         cartContainer.appendChild(div);
         totalPrice += item.price * item.quantity;
     });
 
-    totalPriceElem.textContent = totalPrice;
+    totalPriceElem.textContent = `${totalPrice}`;
 }
 // Update cart badge
 function updateCartBadge() {
@@ -173,7 +173,7 @@ document.getElementById("place-order").addEventListener("click", async() => {
     updateCartBadge();
    }catch(error){
 	console.error('Error',error);
-	alert('Något gick fel när orden akulle läggas.');
+	alert('Något gick fel när orden skulle läggas.');
    }
 });
 
@@ -198,7 +198,7 @@ function navigateToPage(pageId) {
     // Add 'active' class to the desired page
     document.getElementById(pageId).classList.add("active");
 }
-
+/*
 // Example of usage:
 document.getElementById("cart-icon-container").addEventListener("click", () => {
     navigateToPage("order"); // Navigate to the Order page
@@ -209,7 +209,8 @@ document.getElementById("cart-icon-container").addEventListener("click", () => {
 // Example of usage:
 document.getElementById("cart-icon-container").addEventListener("click", () => {
     navigateToPage("order"); // Navigate to the Order page
-});
+});*/
+
 //Reset app state for a new order
 function resetApp() {
 cart=[];
