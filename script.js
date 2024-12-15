@@ -221,11 +221,12 @@ updateCartBadge();
 
 
 function showReceipt(orderId) {
-	const ReceiptText=document.getElementById('confirmation-text');
-	receiptText.innerHtml=
+	const receiptText=document.getElementById('confirmation-text');
+	receiptText.innerHtml= `
 	Tack för din beställning!<br></br>
 	Order Id:${orderId}<br></br>
-	din mat kommer snart;
+	din mat kommer snart
+	`;
 	navigateToPage('faktur');
 }
   
