@@ -160,6 +160,23 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     }
 });
 
+// Place order and reset cart
+document.getElementById("place-order").addEventListener("click", async() => {
+	if (cart.lenght===0){
+		alert('Din varukorg är tom');
+		return;
+	}
+	try{
+		await placeOrder();
+        cart = [];
+    updateCart();
+    updateCartBadge();
+   }catch(error){
+	console.error('Error',error);
+	alert('Något gick fel när orden akulle läggas.');
+   }
+});
+
 
 // Show Faktur page
 function showFaktur() {
@@ -193,24 +210,15 @@ document.getElementById("cart-icon-container").addEventListener("click", () => {
 document.getElementById("cart-icon-container").addEventListener("click", () => {
     navigateToPage("order"); // Navigate to the Order page
 });
+//Reset app state for a new order
+function resetApp() {
+cart=[];
+updateCart();
+updateCartBadge();
+}
 
 
 
-// Place order and reset cart
-document.getElementById("place-order").addEventListener("click", async() => {
-	if (cart.lenght===0){
-		alert('Din varukorg är tom');
-		return;
-	}
-	try{
-		await placeOrder();
-        cart = [];
-    updateCart();
-    updateCartBadge();
-   }catch(error){
-	console.error('Error',error);
-	alert('Något gick fel när orden akulle läggas.');
-   }
 
 function showReceipt(orderId) {
 	const ReceiptText=document.getElementById('confirmation-text');
