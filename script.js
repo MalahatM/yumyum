@@ -28,7 +28,7 @@ async function loadMenuItems() {
     }
 }
 
-let cart = [];
+
 
 // Load menu items dynamically
 const menuContainer = document.getElementById("menu-items");
@@ -74,6 +74,8 @@ const menuContainer = document.getElementById("menu-items");
         updateCartBadge();
     });
 });
+
+let cart=[];
 
 // Update cart display
 function updateCart() {
@@ -144,12 +146,20 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
 });
 
 // Place order and reset cart
-document.getElementById("place-order").addEventListener("click", () => {
-    cart = [];
+document.getElementById("place-order").addEventListener("click", async() => {
+	if (cart.lenght===0){
+		alert('Din varukorg är tom');
+		return;
+	}
+	try{
+		await placeOrder();
+        cart = [];
     updateCart();
     updateCartBadge();
-    showFaktur();
-});
+   }catch(error){
+	console.error('Error',error);
+	alert('Något gick fel när orden akulle läggas.');
+   }
 
 // Show Faktur page
 function showFaktur() {
