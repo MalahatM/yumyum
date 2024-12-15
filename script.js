@@ -217,7 +217,25 @@ cart=[];
 updateCart();
 updateCartBadge();
 }
-
+// Initialize app when the page loads
+async function initializeApp() {
+    try {
+        const menuItems = await loadMenuItems();
+        displayMenuItems(menuItems);
+        
+        document.getElementById("cart-icon-container").addEventListener("click", () => {
+            navigateToPage("order");
+        });
+        
+        document.getElementById("new-order").addEventListener("click", () => {
+            resetApp();
+            navigateToPage("menu");
+        });
+    } catch (error) {
+        console.error('Error initializing app:', error);
+        alert('Kunde inte starta appen. Försök ladda om sidan.');
+    }
+}
 
 
 
