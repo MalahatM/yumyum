@@ -1,6 +1,6 @@
 const API_KEY = "yum-zaCmZA74PLKCrD8Y";
-const apiUrl = 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com'
-const tenantId = "a2f4"
+const apiUrl = 'https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com';
+const tenantId = "a2f4";
 
 async function loadMenuItems() {
     try {
@@ -52,7 +52,7 @@ function updateCart() {
     let totalPrice = 0;
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Din varukorg är tom</p>';
+        cartContainer.innerHTML = '<p>Your cart is empty</p>';
         return;
     }
 
@@ -66,7 +66,7 @@ function updateCart() {
                 <span>${item.quantity}</span>
                 <button class="quantity-btn increase-quantity" data-index="${index}">+</button>
             </div>
-            <p>Pris: ${item.price * item.quantity} SEK</p>
+            <p>Price: ${item.price * item.quantity} SEK</p>
         `;
         cartContainer.appendChild(div);
         totalPrice += item.price * item.quantity;
@@ -125,8 +125,6 @@ function message(msg) {
     }, { once: true }); // Ensures the listener is executed only once
 }
 
-
- 
 // Place order and reset cart
 document.getElementById("place-order").addEventListener("click", async () => {
     if (cart.length === 0) {
@@ -139,17 +137,32 @@ document.getElementById("place-order").addEventListener("click", async () => {
         cart = [];
         updateCart();
         updateCartBadge();
-        // Removed the 'Order placed successfully!' message
     } catch (error) {
         console.error('Error:', error);
         message('Something went wrong while placing the order.');
     }
 });
 
+// New "Back to Menu" button functionality
+document.getElementById("back-to-menu").addEventListener("click", () => {
+    navigateToPage("menu");  // Navigate back to the menu
+    resetApp();  // Reset the cart and other app states
+});
 
+// Reset app state for a new order
+function resetApp() {
+    cart = [];  // Clear the cart
+    updateCart();  // Update cart display
+    updateCartBadge();  // Update cart badge
+}
 
+function navigateToPage(pageId) {
+    document.querySelectorAll(".page").forEach((section) => section.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+    window.scrollTo(0, 0); // Ensure the page scrolls to the top
+}
 
-// Show Faktur page
+// Show Receipt page
 function showFaktur() {
     document.querySelectorAll(".page").forEach((section) => section.classList.remove("active"));
     document.getElementById("faktur").classList.add("active");
@@ -160,19 +173,6 @@ document.getElementById("new-order").addEventListener("click", () => {
     resetApp();
     navigateToPage("menu");
 });
-
-// Navigating to the specific page (ensuring only one is active)
-function navigateToPage(pageId) {
-    document.querySelectorAll(".page").forEach((section) => section.classList.remove("active"));
-    document.getElementById(pageId).classList.add("active");
-}
-
-// Reset app state for a new order
-function resetApp() {
-    cart = [];
-    updateCart();
-    updateCartBadge();
-}
 
 // Initialize app when the page loads
 async function initializeApp() {
@@ -190,12 +190,12 @@ async function initializeApp() {
         });
     } catch (error) {
         console.error('Error initializing app:', error);
-        alert('Kunde inte starta appen. Försök ladda om sidan.');
+        alert('Could not start the app. Please try reloading the page.');
     }
 }
 
 // Call when page loads
- initializeApp();
+initializeApp();
 
 // Organize menu items by category
 function displayMenuItems(items) {
@@ -213,7 +213,7 @@ function displayMenuItems(items) {
 
     menuContainer.innerHTML = ''; // Clear existing items
     
-    // Create sections with updated wonton filter
+    // Create sections with updated categories
     const sections = {
         wontons: items.filter(item => item.type === "wonton"),
         dips: items.filter(item => item.type === "dip"),
@@ -231,7 +231,7 @@ function displayMenuItems(items) {
         const sectionTitles = {
             wontons: 'Wontons',
             dips: 'Dips',
-            drinks: 'Drycker'
+            drinks: 'Drinks'
         };
         
         section.innerHTML = `<h2>${sectionTitles[sectionName]}</h2>`;
@@ -242,9 +242,9 @@ function displayMenuItems(items) {
             itemDiv.innerHTML = `
                 <h3>${item.name}</h3>
                 ${item.ingredients ? 
-                    `<p>Ingredienser: ${item.ingredients.join(', ')}</p>` : 
+                    `<p>Ingredients: ${item.ingredients.join(', ')}</p>` : 
                     `<p>${item.description || ''}</p>`}
-                <p>Pris: ${item.price} SEK</p>
+                <p>Price: ${item.price} SEK</p>
             `;
             
             itemDiv.addEventListener('click', () => addToCart(item));
@@ -277,17 +277,16 @@ async function placeOrder() {
         navigateToPage('faktur');
     } catch (error) {
         console.error('Error placing order:', error);
-        alert('Det gick inte att lägga ordern. Försök igen.');
+        alert('Order failed. Please try again.');
     }
 }
 
 function showReceipt(orderId) {
     const receiptText = document.getElementById('confirmation-text');
     receiptText.innerHTML = `
-        Thnak you for your order!<br><br>
+        Thank you for your order!<br><br>
         Order ID: ${orderId}<br><br>
-      your order comes soon!
+        Your order will arrive soon!
     `;
     navigateToPage('faktur');
 }
-
