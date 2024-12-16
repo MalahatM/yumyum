@@ -108,10 +108,10 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     }
 });
 
-// Place order and reset cart
+ //place order and reset cart
 document.getElementById("place-order").addEventListener("click", async () => {
     if (cart.length === 0) {
-        alert('Din varukorg är tom!');
+        message('Din varukorg är tom!');
         return;
     }
     
@@ -122,7 +122,7 @@ document.getElementById("place-order").addEventListener("click", async () => {
         updateCartBadge();
     } catch (error) {
         console.error('Error:', error);
-        alert('Något gick fel när ordern skulle läggas.');
+        message('Något gick fel när ordern skulle läggas.');
     }
 });
 
