@@ -262,14 +262,40 @@ function displayMenuItems(items) {
     };
 
 
-function showReceipt(orderId) {
-	const receiptText=document.getElementById('confirmation-text');
-	receiptText.innerHtml= `
-	Tack för din beställning!<br></br>
-	Order Id:${orderId}<br></br>
-	din mat kommer snart
-	`;
-	navigateToPage('faktur');
+	async function placeOrder() {
+		try {
+			const orderData = {
+				items: cart.map(item => item.id)
+			};
+	
+			const response = await fetch(`${apiUrl}/${tenantId}/orders`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'x-zocom': API_KEY
+				},
+				body: JSON.stringify(orderData)
+			});
+	
+			if (!response.ok) throw new Error('Order failed');
+	
+			const data = await response.json();
+			showReceipt(data.order.id);
+			navigateToPage('faktur');
+		} catch (error) {
+			console.error('Error placing order:', error);
+			alert('Det gick inte att lägga ordern. Försök igen.');
+		}
+	}
+	
+	function showReceipt(orderId) {
+		const receiptText = document.getElementById('confirmation-text');
+		receiptText.innerHTML = `
+			Tack för din beställning!<br><br>
+			Order ID: ${orderId}<br><br>
+			Din mat kommer snart!
+		`;
+		navigateToPage('faktur');
+	}
 }
-  
 
