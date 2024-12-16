@@ -127,15 +127,7 @@ gap: 10px;
 	border-radius: 3px;
 	cursor:pointer;
 }
-.remove-btn{
-	background:#ff4444;
-	color: white;
-	border:none;
-	padding: 5px 10px;
-	border-radius: 3px;
-	cursor:pointer;
-	
-}
+
 #back-to-menu {
     margin-top: 20px;
     padding: 10px 20px;
