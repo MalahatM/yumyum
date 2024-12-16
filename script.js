@@ -261,9 +261,9 @@ async function placeOrder() {
 function showReceipt(orderId) {
     const receiptText = document.getElementById('confirmation-text');
     receiptText.innerHTML = `
-        Tack för din beställning!<br><br>
+        Thnak you for your order!<br><br>
         Order ID: ${orderId}<br><br>
-        Din mat kommer snart!
+      your order comes soon!
     `;
     navigateToPage('faktur');
 }
