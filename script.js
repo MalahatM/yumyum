@@ -172,7 +172,7 @@ async function initializeApp() {
 }
 
 // Call when page loads
-document.addEventListener('DOMContentLoaded', initializeApp);
+ initializeApp();
 
 // Organize menu items by category
 function displayMenuItems(items) {
