@@ -90,6 +90,14 @@ body {
 
 #total {
     margin-top: 20px;
+	color: orange;
+}
+#total-price{
+	color: red;
+}
+h1{
+	color: orange;
+
 }
 .menu-section{
 	background: #444;
