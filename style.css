@@ -104,5 +104,36 @@ body {
 
 }
 
+.cart-item{
+	background: #4CAF50;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
+}
+.quantity-controls{
+	display: flex;
+gap: 10px;
+	align-items: center;
+}
+.quantity-btn{
+	background: #333;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	cursor:pointer;
+}
+.remove-btn{
+	background:#ff4444;
+	color: white;
+	border:none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	cursor:pointer;
+	
+}
 
