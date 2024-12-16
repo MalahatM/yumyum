@@ -108,23 +108,46 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     }
 });
 
- //place order and reset cart
+function message(msg) {
+    const dialog = document.getElementById('custom-dialog');
+    const dialogMessage = document.getElementById('dialog-message');
+    const closeBtn = document.getElementById('dialog-close-btn');
+
+    // Set the message text
+    dialogMessage.textContent = msg;
+
+    // Show the dialog
+    dialog.showModal();
+
+    // Add an event listener to close the dialog
+    closeBtn.addEventListener('click', () => {
+        dialog.close();
+    }, { once: true }); // Ensures the listener is executed only once
+}
+
+
+ 
+// Place order and reset cart
 document.getElementById("place-order").addEventListener("click", async () => {
     if (cart.length === 0) {
-        message('Din varukorg är tom!');
+        message('Your cart is empty!');
         return;
     }
-    
+
     try {
         await placeOrder();
         cart = [];
         updateCart();
         updateCartBadge();
+        // Removed the 'Order placed successfully!' message
     } catch (error) {
         console.error('Error:', error);
-        message('Något gick fel när ordern skulle läggas.');
+        message('Something went wrong while placing the order.');
     }
 });
+
+
+
 
 // Show Faktur page
 function showFaktur() {
