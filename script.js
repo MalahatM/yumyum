@@ -38,7 +38,7 @@ function addToCart(item) {
     } else {
         cart.push({ ...item, quantity: 1 });
     }
-    updateCart();
+    updateCart();  // Updates cart and total price
     updateCartBadge();
 }
 
@@ -53,6 +53,7 @@ function updateCart() {
 
     if (cart.length === 0) {
         cartContainer.innerHTML = '<p>Your cart is empty</p>';
+        totalPriceElem.textContent = '0 SEK';  // Ensure total price is 0 when the cart is empty
         return;
     }
 
@@ -72,7 +73,7 @@ function updateCart() {
         totalPrice += item.price * item.quantity;
     });
 
-    totalPriceElem.textContent = `${totalPrice}`;
+    totalPriceElem.textContent = `${totalPrice} SEK`;  // Update total price correctly
 }
 
 // Update cart badge
@@ -98,36 +99,17 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     if (e.target.classList.contains("increase-quantity")) {
         const index = Number(e.target.dataset.index);
         cart[index].quantity += 1;
-        updateCart();
+        updateCart();  // Update total price
     } else if (e.target.classList.contains("decrease-quantity")) {
         const index = Number(e.target.dataset.index);
         if (cart[index].quantity > 1) {
             cart[index].quantity -= 1;
-            updateCart();
-		}else if (cart[index].quantity===1){
-			cart.splice(index,1);
-			updateCart();
-		}
+        } else {
+            cart.splice(index, 1);  // Remove item from cart if quantity is 1
         }
-    });
-
-
-function message(msg) {
-    const dialog = document.getElementById('custom-dialog');
-    const dialogMessage = document.getElementById('dialog-message');
-    const closeBtn = document.getElementById('dialog-close-btn');
-
-    // Set the message text
-    dialogMessage.textContent = msg;
-
-    // Show the dialog
-    dialog.showModal();
-
-    // Add an event listener to close the dialog
-    closeBtn.addEventListener('click', () => {
-        dialog.close();
-    }, { once: true }); // Ensures the listener is executed only once
-}
+        updateCart();  // Update total price
+    }
+});
 
 // Place order and reset cart
 document.getElementById("place-order").addEventListener("click", async () => {
@@ -281,7 +263,6 @@ async function placeOrder() {
         navigateToPage('faktur');
     } catch (error) {
         console.error('Error placing order:', error);
-       
     }
 }
 
