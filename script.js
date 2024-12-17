@@ -159,7 +159,7 @@ function resetApp() {
 function navigateToPage(pageId) {
     document.querySelectorAll(".page").forEach((section) => section.classList.remove("active"));
     document.getElementById(pageId).classList.add("active");
-    window.scrollTo(0, 0); // Ensure the page scrolls to the top
+   // window.scrollTo(0, 0); // Ensure the page scrolls to the top
 }
 
 // Show Receipt page
@@ -277,7 +277,7 @@ async function placeOrder() {
         navigateToPage('faktur');
     } catch (error) {
         console.error('Error placing order:', error);
-        alert('Order failed. Please try again.');
+       
     }
 }
 
