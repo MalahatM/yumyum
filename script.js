@@ -104,9 +104,13 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
         if (cart[index].quantity > 1) {
             cart[index].quantity -= 1;
             updateCart();
+		}else if (cart[index].quantity===1){
+			cart.splice(index,1);
+			updateCart();
+		}
         }
-    }
-});
+    });
+
 
 function message(msg) {
     const dialog = document.getElementById('custom-dialog');
