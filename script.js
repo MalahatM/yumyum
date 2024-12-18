@@ -145,7 +145,7 @@ function resetApp() {
 function navigateToPage(pageId) {
     document.querySelectorAll(".page").forEach((section) => section.classList.remove("active"));
     document.getElementById(pageId).classList.add("active");
-   // window.scrollTo(0, 0); // Ensure the page scrolls to the top
+    // window.scrollTo(0, 0); // Ensure the page scrolls to the top
 }
 
 // Show Receipt page
@@ -241,6 +241,11 @@ function displayMenuItems(items) {
     });
 }
 
+// Function to simulate calculating delivery time
+function calculateDeliveryTime() {
+    return Math.floor(Math.random() * 10) + 5;  // Random time between 5 and 15 minutes
+}
+
 async function placeOrder() {
     try {
         const orderData = {
@@ -259,19 +264,23 @@ async function placeOrder() {
         if (!response.ok) throw new Error('Order failed');
 
         const data = await response.json();
-        showReceipt(data.order.id);
-        navigateToPage('faktur');
+        
+        const deliveryTime = calculateDeliveryTime(); // Get random delivery time
+        showReceipt(data.order.id, deliveryTime);  // Pass the delivery time to showReceipt
+        
+        navigateToPage('faktur');  // Navigate to receipt page
     } catch (error) {
         console.error('Error placing order:', error);
     }
 }
 
-function showReceipt(orderId) {
+// Function to show the receipt
+function showReceipt(orderId, deliveryTime) {
     const receiptText = document.getElementById('confirmation-text');
     receiptText.innerHTML = `
         Thank you for your order!<br><br>
         Order ID: ${orderId}<br><br>
-        Your order will arrive soon!
+        Your order will arrive in approximately ${deliveryTime} minutes.
     `;
-    navigateToPage('faktur');
+    navigateToPage('faktur');  // Navigate to receipt page
 }
