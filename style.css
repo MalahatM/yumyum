@@ -60,7 +60,7 @@ body {
 }
 
 .item {
-	background: #4CAF50;
+	background: #605858;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -79,7 +79,7 @@ body {
 	
 }
 #faktur{
-	background: #4CAF50;
+	background: #489078;
 	margin-top: 50px;
 	
 
@@ -100,7 +100,7 @@ h1{
 
 }
 .menu-section{
-	background: #444;
+	background: #489078;
 	margin-bottom: 20px;
 	padding: 15px;
 	border-radius: 8px;
@@ -113,7 +113,7 @@ h1{
 }
 
 .cart-item{
-	background: #4CAF50;
+	background: #489078;
 	padding: 15px;
 	margin-bottom: 10px;
 	border-radius: 5px;
@@ -139,7 +139,7 @@ gap: 10px;
 #back-to-menu {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #489078;
     color: white;
     border: none;
     border-radius: 5px;
@@ -148,7 +148,7 @@ gap: 10px;
 }
 
 #back-to-menu:hover {
-    background-color: #45a049;
+    background-color: #000000;
 }
 
 
