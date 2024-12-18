@@ -54,6 +54,7 @@ body {
 
 /* Item list styles */
 .items-container {
+	color: #EEEEEE;
     display: flex;
     flex-direction: column;
     gap: 15px;
