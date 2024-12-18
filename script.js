@@ -51,12 +51,6 @@ function updateCart() {
     cartContainer.innerHTML = "";
     let totalPrice = 0;
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty</p>';
-        totalPriceElem.textContent = '0 SEK';  // Ensure total price is 0 when the cart is empty
-        return;
-    }
-
     cart.forEach((item, index) => {
         const div = document.createElement("div");
         div.className = "cart-item";
@@ -242,6 +236,10 @@ function displayMenuItems(items) {
 }
 
 async function placeOrder() {
+	if (cart.length === 0) { 
+		return; // Do nothing
+	}
+	
     try {
         const orderData = {
             items: cart.map(item => item.id)
