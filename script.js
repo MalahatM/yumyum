@@ -68,7 +68,7 @@ function updateCart() {
                 <button class="quantity-btn increase-quantity" data-index="${index}">+</button>
             </div>
             <p>Price: ${item.price * item.quantity} SEK</p>
-        `;
+       `;
         cartContainer.appendChild(div);
         totalPrice += item.price * item.quantity;
     });
@@ -145,7 +145,7 @@ function resetApp() {
 function navigateToPage(pageId) {
     document.querySelectorAll(".page").forEach((section) => section.classList.remove("active"));
     document.getElementById(pageId).classList.add("active");
-    // window.scrollTo(0, 0); // Ensure the page scrolls to the top
+   // window.scrollTo(0, 0); // Ensure the page scrolls to the top
 }
 
 // Show Receipt page
@@ -228,10 +228,10 @@ function displayMenuItems(items) {
             itemDiv.innerHTML = `
                 <h3>${item.name}</h3>
                 ${item.ingredients ? 
-                    `<p>Ingredients: ${item.ingredients.join(', ')}</p>` : 
+                   `<p>Ingredients: ${item.ingredients.join(', ')}</p>`: 
                     `<p>${item.description || ''}</p>`}
                 <p>Price: ${item.price} SEK</p>
-            `;
+           ` ;
             
             itemDiv.addEventListener('click', () => addToCart(item));
             section.appendChild(itemDiv);
@@ -239,11 +239,6 @@ function displayMenuItems(items) {
         
         menuContainer.appendChild(section);
     });
-}
-
-// Function to simulate calculating delivery time
-function calculateDeliveryTime() {
-    return Math.floor(Math.random() * 10) + 5;  // Random time between 5 and 15 minutes
 }
 
 async function placeOrder() {
@@ -264,23 +259,19 @@ async function placeOrder() {
         if (!response.ok) throw new Error('Order failed');
 
         const data = await response.json();
-        
-        const deliveryTime = calculateDeliveryTime(); // Get random delivery time
-        showReceipt(data.order.id, deliveryTime);  // Pass the delivery time to showReceipt
-        
-        navigateToPage('faktur');  // Navigate to receipt page
+        showReceipt(data.order.id);
+        navigateToPage('faktur');
     } catch (error) {
         console.error('Error placing order:', error);
     }
 }
 
-// Function to show the receipt
-function showReceipt(orderId, deliveryTime) {
+function showReceipt(orderId) {
     const receiptText = document.getElementById('confirmation-text');
     receiptText.innerHTML = `
         Thank you for your order!<br><br>
         Order ID: ${orderId}<br><br>
-        Your order will arrive in approximately ${deliveryTime} minutes.
+        Your order will arrive soon!
     `;
-    navigateToPage('faktur');  // Navigate to receipt page
-}
+    navigateToPage('faktur');
+} 
