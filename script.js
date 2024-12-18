@@ -105,14 +105,10 @@ document.getElementById("cart-items").addEventListener("click", (e) => {
     }
 });
 
-// Place order and reset cart
+//Place order and reset cart
 document.getElementById("place-order").addEventListener("click", async () => {
-    if (cart.length === 0) {
-        message('Your cart is empty!');
-        return;
-    }
-
-    try {
+  
+try {
         await placeOrder();
         cart = [];
         updateCart();
