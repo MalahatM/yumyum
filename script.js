@@ -232,10 +232,10 @@ function displayMenuItems(items) {
 }
 
 async function placeOrder() {
-	if (cart.length === 0) { 
-		return; // Do nothing
-	}
-	
+    if (cart.length === 0) { 
+        return; // Do nothing if the cart is empty
+    }
+    
     try {
         const orderData = {
             items: cart.map(item => item.id)
@@ -253,19 +253,29 @@ async function placeOrder() {
         if (!response.ok) throw new Error('Order failed');
 
         const data = await response.json();
-        showReceipt(data.order.id);
+
+        // Extract ETA and Order ID
+        const eta = data.order.eta;
+        const orderId = data.order.id;
+
+        showReceipt(orderId, eta);
         navigateToPage('faktur');
     } catch (error) {
         console.error('Error placing order:', error);
     }
 }
 
-function showReceipt(orderId) {
+function showReceipt(orderId, eta) {
     const receiptText = document.getElementById('confirmation-text');
+    
+    // Format the ETA to show the delivery time to user
+    const etaDate = new Date(eta);
+    const minutes = etaDate.getMinutes();
+    
     receiptText.innerHTML = `
         Thank you for your order!<br><br>
         Order ID: ${orderId}<br><br>
-        Your order will arrive soon!
+        Your order will arrive in approximately ${minutes}:(minutes).<br>
     `;
     navigateToPage('faktur');
-} 
+}
