@@ -275,7 +275,7 @@ function showReceipt(orderId, eta) {
     receiptText.innerHTML = `
         Thank you for your order!<br><br>
         Order ID: ${orderId}<br><br>
-        Your order will arrive in approximately ${minutes}:(minutes).<br>
+        Your order will arrive in approximately ${minutes}(minutes).<br>
     `;
     navigateToPage('faktur');
 }
