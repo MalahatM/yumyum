@@ -122,7 +122,7 @@ try {
 // New "Back to Menu" button functionality
 document.getElementById("back-to-menu").addEventListener("click", () => {
     navigateToPage("menu");  // Navigate back to the menu
-    resetApp();  // Reset the cart and other app states
+   
 });
 
 // Reset app state for a new order
