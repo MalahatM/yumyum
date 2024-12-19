@@ -259,7 +259,7 @@ async function placeOrder() {
         const orderId = data.order.id;
 
         showReceipt(orderId, eta);
-        navigateToPage('faktur');
+        navigateToPage('receipt');
     } catch (error) {
         console.error('Error placing order:', error);
     }
@@ -277,5 +277,5 @@ function showReceipt(orderId, eta) {
         Order ID: ${orderId}<br><br>
         Your order will arrive in approximately ${minutes}(minutes).<br>
     `;
-    navigateToPage('faktur');
+    navigateToPage('receipt');
 }
