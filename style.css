@@ -68,6 +68,10 @@ body {
     cursor: pointer;
 	margin-bottom: 15px;
 }
+.item:hover{
+	background-color: #000000;
+
+}
 
 .page {
     display: none;
@@ -126,6 +130,7 @@ h1{
 	align-items: center;
 
 }
+
 .quantity-controls{
 	display: flex;
 gap: 10px;
