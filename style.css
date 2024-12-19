@@ -79,11 +79,14 @@ body {
     display: block;
 	
 }
-#faktur{
-	background: #489078;
+#receipt{
+	background: #423c3c;
 	margin-top: 50px;
 	
 
+}
+#confirmation-text{
+	color: #EEEEEE;
 }
 
 /* Order Section */
@@ -153,40 +156,3 @@ gap: 10px;
 }
 
 
-dialog {
-    width: 90%;
-    max-width: 200px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    padding: 20px;
-    background-color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-.dialog-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-#dialog-message {
-    font-size: 1rem;
-    color: #333;
-}
-
-#dialog-close-btn {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-#dialog-close-btn:hover {
-    background-color: #45a049;
-}
