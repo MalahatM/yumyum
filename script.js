@@ -166,9 +166,9 @@ async function initializeApp() {
         });
     } catch (error) {
         console.error('Error initializing app:', error);
-        alert('Could not start the app. Please try reloading the page.');
     }
 }
+
 
 // Call when page loads
 initializeApp();
