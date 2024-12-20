@@ -1,0 +1,163 @@
+body {
+	 height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #655f5f;
+}
+
+/* Menu Section */
+.page.active {
+	display: grid;
+    background-color:rgb(48, 44, 44);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    margin: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+	width: 60%;
+}
+
+.menu-title {
+   font-size: 1.5rem;
+    color: white;
+    margin: 0 0 20px;
+}
+
+/* Cart Icon and Badge Styling */
+#cart-icon-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cart-badge.hidden {
+    display: none;
+}
+
+/* Item list styles */
+.items-container {
+	color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item {
+	background: #605858;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+	margin-bottom: 15px;
+}
+.item:hover{
+	background-color: #000000;
+
+}
+
+.page {
+    display: none;
+    padding: 20px;
+}
+
+/* Active page will be shown */
+.page.active {
+    display: block;
+	
+}
+#receipt{
+	background: #423c3c;
+	margin-top: 50px;
+	
+
+}
+#confirmation-text{
+	color: #EEEEEE;
+}
+
+/* Order Section */
+
+
+#total {
+    margin-top: 20px;
+	color: orange;
+}
+#total-price{
+	color: red;
+}
+h1{
+	color: orange;
+
+}
+.menu-section{
+	background: #489078;
+	margin-bottom: 20px;
+	padding: 15px;
+	border-radius: 8px;
+}
+.menu-section h2{
+	color:white;
+	margin-bottom: 20px;
+	text-transform:uppercase
+
+}
+
+.cart-item{
+	background: #489078;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+
+.quantity-controls{
+	display: flex;
+gap: 10px;
+	align-items: center;
+}
+.quantity-btn{
+	background: #333;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	cursor:pointer;
+}
+
+#back-to-menu {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #489078;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#back-to-menu:hover {
+    background-color: #000000;
+}
+
+
